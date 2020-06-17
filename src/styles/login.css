@@ -1,0 +1,128 @@
+
+.login-card {
+    width: 400px;
+    height: 450px;
+    margin-top: 40px;
+}
+
+@media (min-width: 450px) {
+    .login-card {
+        padding: 48px 40px 36px;
+    }
+}
+
+
+@media screen and (max-width: 400px ) {
+    .login-card {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 320px
+
+    }
+}
+
+.fundoo-font {
+
+    padding-top: 15px;
+    text-align: center;
+}
+
+.fundoo-font > span {
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.4286;
+}
+
+.f {
+    color: blue;
+}
+
+.u {
+    color: red;
+}
+
+.n {
+    color: orange;
+}
+
+.o {
+    color: green;
+}
+
+.sign-in {
+    padding-top: 16px;
+    padding-bottom: 0px;
+    box-sizing: inherit;
+    color: #202124;
+    text-align: center;
+}
+.sign-in >span {
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+}
+
+.fundoo-account {
+    padding-top: 8px;
+    padding-bottom: 0px;
+    text-align: center;
+    box-sizing: inherit;
+    color: #202124;
+
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: .1px;
+
+   
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.login-form {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.email {
+    padding-top: 16px;
+    padding: 18.5px 14px;
+    width: 100%;
+    padding-bottom: 16px;
+    padding-top: 20px;
+}
+
+.password {
+    padding-top: 16px;
+    padding: 18.5px 14px;
+    width: 100%;
+    padding-bottom: 16px;
+    padding-top: 20px;
+}
+
+.forget-password {
+    color: #1a73e8;
+    /* font-weight: 600; */
+    font-size: inherit;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    padding-top: 10px;
+
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: .25px;
+}
+
+.bottom {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
