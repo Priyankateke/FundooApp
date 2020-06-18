@@ -6,7 +6,7 @@
     height: 450px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .fundoo-font-registration {
@@ -54,18 +54,19 @@
     padding: 0px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
-.registration-content {
+/* .registration-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
-} 
+}  */
 
 .first-last-name {
-    padding-top: 20px;
+    margin-top: 20px;
     height: 35px;
     width: 100%;
     display: flex;
@@ -74,7 +75,7 @@
 }
 
 .firstname {
-    padding-right: 10px;
+    margin-right: 10px;
 }
 .firstname-text {
     text-align: center;
@@ -92,7 +93,7 @@
 
 .username {
     width:100%;
-    padding-top: 30px;
+    margin-top: 30px;
   
 }
 
@@ -128,12 +129,31 @@
     padding-top: 30px;
     display: flex;
     flex-direction: row;
-    align-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    align-content: flex-start;
 }
 
-.image-container{
-    border: 2px solid red;
+.fundoo-image-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    /* border: 2px solid red; */
     
-    width: 252px;
-    height: 430px;
+    /* width: 252px; */
+    /* height: 430px; */
+}
+
+.logo-caption {
+    text-align: center;
+}
+
+.password-confirm {
+    /* margin-top: 20px; */
+    height: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
