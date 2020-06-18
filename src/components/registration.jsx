@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import '../App.css'
 import '../styles/registration.css'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import fundooLogo from '../images/logo.svg'
-
 
 export default class extends Component {
     render() {
@@ -17,8 +13,6 @@ export default class extends Component {
             <div >
                 <Card className="registration-container" variant="outlined">
                     <div className="registration-form" variant="outlined">
-                        {/* <CardContent className="registration-content"> */}
-
                         <Typography className="fundoo-font-registration">
                             <span className="f">F</span>
                             <span className="u">u</span>
@@ -60,13 +54,13 @@ export default class extends Component {
                         <div className="password-warning">Use 8 or more characters with a mix of letters, numbers & symbols</div>
                         <div className="buttom-button">
                             <div>
-                                <Button size="small" color="primary">Sign in instead</Button>
+                               <Button size="small" color="primary"
+                               href="/"> Sign in instead</Button>
                             </div>
                             <div>
                                 <Button variant="contained" size="small" color="primary">Sign up</Button>
                             </div>
                         </div>
-                        {/* </CardContent> */}
                     </div>
                     <div className="fundoo-image-container">
                         <img src={fundooLogo} alt='fundoo logo'

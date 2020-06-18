@@ -33,7 +33,7 @@ export default class Login extends Component {
                         <div className="login-form">
                             <TextField className="email" id="outlined-basic" label="Email or Phone" variant="outlined" />
                         </div>
-                        <div><TextField className="password" id="outlined-basic" label="password" variant="outlined" /></div>
+                        <div><TextField className="password" id="outlined-basic" label="password" type="password" variant="outlined" /></div>
                         <div className="forget-password" >Forget password?</div>
                     </div>
                     <div className="bottom">
@@ -53,6 +53,5 @@ export default class Login extends Component {
                 </CardContent>
             </Card>
         );
-
     }
 }

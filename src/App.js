@@ -9,6 +9,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={Login}></Route>
+      <Route exact path="/signin" component={Login}></Route>
       <Route exact path='/registration' component={Registration}></Route>
     </Router>
   );
