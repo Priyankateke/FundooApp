@@ -24,7 +24,7 @@ export default class Login extends Component {
                         <span className="f">d</span>
                         <span className="o">o</span>
                         <span className="u">o</span>
- '                   </Typography>
+                   </Typography>
                     <Typography className="sign-in">
                         <span>Sign in</span>
                     </Typography>
@@ -38,7 +38,10 @@ export default class Login extends Component {
                     </div>
                     <div className="bottom">
                         <Link to={"/registration"} >
-                            <Button size="small">
+                            <Button size="small" className="forget-password" 
+                            onClick={() => this.props.history.push('/registration')}>
+                                {/* Create account? */}
+                            
                                 <div className="forget-password">Create account?
                                   </div>
                             </Button>

@@ -1,0 +1,139 @@
+.registration-container {
+    
+    padding: 48px 40px 36px;
+    margin-top:30px ;
+    width: 740px;
+    height: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fundoo-font-registration {
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    display: block;
+    line-height: 1.4286;
+    width: 74px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 1.4286;
+}
+
+.fundoo-font-registration > span{
+    
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4286;
+}
+
+.f {
+    color: blue;
+}
+
+.u {
+    color: red;
+}
+
+.n {
+    color: orange;
+}
+
+.o {
+    color: green;
+}
+
+.create-account {
+    padding-top: 16px;
+}
+
+.registration-form {
+
+    width: 368px;
+    height: 430px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+} 
+
+.first-last-name {
+    padding-top: 20px;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.firstname {
+    padding-right: 10px;
+}
+.firstname-text {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+#outlined-basic {
+    height:5px;
+}
+
+.username-textfield {
+    width:100%;
+}
+
+.username {
+    width:100%;
+    padding-top: 30px;
+  
+}
+
+.username-warning {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    padding-top: 8px;
+    opacity: 1;
+
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 12px;
+    line-height: normal;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+.password-warning {
+    padding-top: 24px;
+    display: block;
+    font-size: 12px;
+    width: 100%;
+    color: #202124;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
+
+.buttom-button {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.image-container{
+    border: 2px solid red;
+    
+    width: 252px;
+    height: 430px;
+}
