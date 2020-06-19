@@ -7,27 +7,19 @@
 
 @media (min-width: 411px) {
     .login-card {
-        padding: 48px 40px 36px;
+        padding:36px 48px 40px 36px;
         widows: 200px;
-        /* width: 500px; */
-    /* padding: 48px 40px 36px; */
-    /* margin-top: 200px; */
     }
 }
 
-@media screen and (max-width: 400px ) {
+@media screen and (max-width: 411px ) {
     .login-card {
         padding-left: 20px;
         padding-right: 20px;
-        width: 320px
+        width: 320px;
     }
 }
 
-@media screen and (max-width: 768px){
-    .loginbox{
-        margin-top:250px !important;
-    }
-}
 @media screen and (max-width: 1024px){
     .loginbox{
        margin-top:450px !important;
@@ -75,12 +67,12 @@
     color: #202124;
     text-align: center;
 }
-.sign-in >span {
-    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.3333;
-}
+    .sign-in >span {
+        font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.3333;
+    }
 
 .fundoo-account {
     padding-top: 8px;
@@ -127,7 +119,6 @@
 
 .forget-password {
     color: #1a73e8;
-    /* font-weight: 600; */
     font-size: inherit;
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
     padding-top: 10px;
@@ -143,4 +134,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+@media screen and (max-width: 1024px){
+    .login-card{
+        height: 450px;
+        margin-top: 40px;
+       
+    }
 }

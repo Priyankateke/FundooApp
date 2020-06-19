@@ -45,6 +45,7 @@
 
 .create-account {
     padding-top: 16px;
+    
 }
 
 .registration-form {
@@ -57,13 +58,6 @@
     align-items: flex-start;
     justify-content: space-between;
 }
-
-/* .registration-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-}  */
 
 .first-last-name {
     margin-top: 20px;
@@ -81,27 +75,34 @@
     text-align: center;
     align-items: center;
     width: 100%;
+    
 }
 
+
 #outlined-basic {
-    height:5px;
+    
 }
 
 .username-textfield {
     width:100%;
+    
+
 }
 
 .username {
     width:100%;
-    margin-top: 30px;
+    margin-top: 12px;
+  
   
 }
 
+
+.username-label {
+  
+    text-align: center;
+}
+
 .username-warning {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-    padding-top: 8px;
     opacity: 1;
 
     font-style: normal;
@@ -117,8 +118,7 @@
 }
 
 .password-warning {
-    padding-top: 24px;
-    display: block;
+    margin-top: 20px;
     font-size: 12px;
     width: 100%;
     color: #202124;
@@ -139,10 +139,7 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    /* border: 2px solid red; */
-    
-    /* width: 252px; */
-    /* height: 430px; */
+  
 }
 
 .logo-caption {
@@ -150,7 +147,7 @@
 }
 
 .password-confirm {
-    /* margin-top: 20px; */
+  
     height: 35px;
     width: 100%;
     display: flex;
@@ -160,4 +157,26 @@
 
 .invalid-feedback {
     color: red;
+}
+
+@media only screen and (max-width: 414px) {
+    .registration-container{
+        width:100%;
+        display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    }   
+    .fundoo-image-container {
+        display: none;
+    }
+
+    .first-last-name {
+        margin-top: 20px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
 }

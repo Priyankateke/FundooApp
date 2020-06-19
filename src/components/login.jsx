@@ -6,8 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import CardActions from '@material-ui/core/CardActions';
 
 import { BrowserRouter as Link } from 'react-router-dom';
 
@@ -25,7 +23,7 @@ export default class Login extends Component {
                         <span className="f">d</span>
                         <span className="o">o</span>
                         <span className="u">o</span>
-                   </Typography>
+                    </Typography>
                     <Typography className="sign-in">
                         <span>Sign in</span>
                     </Typography>
@@ -35,14 +33,21 @@ export default class Login extends Component {
                             <TextField className="email" id="outlined-basic" label="Email or Phone" variant="outlined" />
                         </div>
                         <div><TextField className="password" id="outlined-basic" label="password" type="password" variant="outlined" /></div>
-                        <div className="forget-password" >Forget password?</div>
+                        {/* <div className="forget-password" >Forget password?</div> */}
+
+                        <div className="forget-password">
+                            <Button size="small" 
+                                href="/forgetPassword"  >
+                                <div className="forget-password">Forget password?
+                                  </div>
+                            </Button>
+                        </div>
+
                     </div>
                     <div className="bottom">
                         <Link to={"/registration"} >
-                            <Button size="small" className="forget-password" 
-                            onClick={() => this.props.history.push('/registration')}>
-                                {/* Create account? */}
-                            
+                            <Button size="small" className="forget-password"
+                                href="/registration"  >
                                 <div className="forget-password">Create account?
                                   </div>
                             </Button>
