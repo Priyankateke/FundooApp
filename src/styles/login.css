@@ -5,19 +5,37 @@
     margin-top: 40px;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 411px) {
     .login-card {
         padding: 48px 40px 36px;
+        widows: 200px;
+        /* width: 500px; */
+    /* padding: 48px 40px 36px; */
+    /* margin-top: 200px; */
     }
 }
-
 
 @media screen and (max-width: 400px ) {
     .login-card {
         padding-left: 20px;
         padding-right: 20px;
         width: 320px
+    }
+}
 
+@media screen and (max-width: 768px){
+    .loginbox{
+        margin-top:250px !important;
+    }
+}
+@media screen and (max-width: 1024px){
+    .loginbox{
+       margin-top:450px !important;
+       width: 600px;
+       height: 700px;
+    }
+    body {
+        padding-top: 40px;
     }
 }
 
