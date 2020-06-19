@@ -10,6 +10,10 @@ import fundooLogo from '../images/logo.svg'
 const NAME_PATTERN = RegExp(
     /^[A-Z]{1}[a-z]{2,}$/
 )
+
+const USERNAME_PATTERN = RegExp(
+    /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
+)
 export default class extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +21,7 @@ export default class extends Component {
         this.state = {
             firstname: "",
             lastname: "",
-            username: "@gmail.com",
+            username: "",
             password: "",
             confirmPassword: "",
             isError: {
@@ -44,6 +48,11 @@ export default class extends Component {
                 isError.lastname = NAME_PATTERN.test(value)
                     ? ""
                     : "lastname Name is invalid";
+                break;
+            case "username":
+                isError.lastname = USERNAME_PATTERN.test(value)
+                    ? ""
+                    : "username Name is invalid";
                 break;
             default:
                 break;
@@ -95,14 +104,23 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="username" >
-                            <TextField className="username-textfield" 
-                            id="outlined-basic" 
-                            name="username" 
-                            label="Username" 
-                            variant="outlined"
-                            value="@gmail.com" />
+                            <TextField className="username-textfield"
+                                id="outlined-basic"
+                                name="username"
+                                label="Username"
+                                variant="outlined"
+                                onChange={this.formValChange} />
+                                <div>
+                                {this.state.isError.username.length > 0 && (
+                                <span className="invalid-feedback">{this.state.isError.username}</span>
+                            )}
+                                </div>
+                            
                         </div>
+                        
+                        
                         <div className="username-warning">You can use numbers, letters & periods</div>
+
                         <div className="password-confirm">
                             <div className="firstname">
                                 <TextField className="firstname-text"
