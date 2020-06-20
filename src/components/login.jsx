@@ -30,13 +30,25 @@ export default class Login extends Component {
                     <div className="fundoo-account">Use your Fundoo Account</div>
                     <div className="form">
                         <div className="login-form">
-                            <TextField className="email" id="outlined-basic" label="Email or Phone" variant="outlined" />
+                            <TextField className="email"
+                                id="outlined-basic"
+                                size="small"
+                                margin="dense"
+                                label="Email or Phone"
+                                variant="outlined" />
                         </div>
-                        <div><TextField className="password" id="outlined-basic" label="password" type="password" variant="outlined" /></div>
+                        <div><TextField
+                            className="password"
+                            size="small"
+                            margin="dense"
+                            id="outlined-basic"
+                            label="password"
+                            type="password"
+                            variant="outlined" /></div>
                         {/* <div className="forget-password" >Forget password?</div> */}
 
                         <div className="forget-password">
-                            <Button size="small" 
+                            <Button size="small"
                                 href="/forgetPassword"  >
                                 <div className="forget-password">Forget password?
                                   </div>

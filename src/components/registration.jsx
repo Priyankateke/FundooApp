@@ -64,7 +64,7 @@ export default class extends Component {
                 confirmPassword: ''
             }
         }
-        this.initialState = this.state; 
+        this.initialState = this.state;
     }
 
     formValChange = e => {
@@ -116,7 +116,7 @@ export default class extends Component {
             alert("form invalid")
         }
     };
-    
+
     render() {
         return (
             <div >
@@ -137,6 +137,8 @@ export default class extends Component {
                             <div className="firstname">
                                 <TextField className="firstname-text"
                                     id="outlined-basic"
+                                    size="small"
+                                    margin="dense"
                                     name="firstname"
                                     label="First name"
                                     variant="outlined"
@@ -149,6 +151,8 @@ export default class extends Component {
                             <div><TextField className="email"
                                 id="outlined-basic"
                                 name="lastname"
+                                size="small"
+                                margin="dense"
                                 label="Last name"
                                 variant="outlined"
                                 onChange={this.formValChange} />
@@ -158,14 +162,16 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="username" >
-                         <TextField 
+                            <TextField
                                 className="username-textfield"
                                 id="outlined-basic"
+                                size="small"
+                                margin="dense"
                                 name="username"
                                 label="Username"
                                 variant="outlined"
                                 onChange={this.formValChange} />
-                                {/* <TextField id="outlined-basic" className="username"  label="Outlined" variant="outlined" /> */}
+
                             <div>
                                 {this.state.isError.username.length > 0 && (
                                     <span className="invalid-feedback">{this.state.isError.username}</span>
@@ -181,10 +187,11 @@ export default class extends Component {
                             <div className="firstname">
                                 <TextField className="firstname-text"
                                     id="outlined-basic"
+                                    size="small"
+                                    margin="dense"
                                     name="password"
                                     label="Password"
                                     type={this.state.showPassword ? "text" : "password"}
-                                    // type="password"
                                     variant="outlined"
                                     onChange={this.formValChange} />
                                 {this.state.isError.password.length > 0 && (
@@ -194,15 +201,35 @@ export default class extends Component {
                             <div>
                                 <TextField className="email"
                                     id="outlined-basic"
+                                    size="small"
+                                    margin="dense"
                                     name="confirmPassword"
                                     label="Confirm"
-                                    type="password"
-                                    // type="password"
+                                    type={this.state.showPassword ? "text" : "password"}
                                     variant="outlined"
                                     onChange={this.formValChange}
-
-
+                                    defaultValue={this.state.confirmPassword}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end" sytle={{ width: "1px" }}>
+                                                <IconButton
+                                                    onClick={() =>
+                                                        this.setState({
+                                                            showPassword: !this.state.showPassword,
+                                                        })
+                                                    }
+                                                >
+                                                    {this.state.showPassword ? (
+                                                        <Visibility />
+                                                    ) : (
+                                                            <VisibilityOff />
+                                                        )}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
                                 />
+                                
                                 {this.state.isError.confirmPassword.length > 0 && (
                                     <span className="invalid-feedback">{this.state.isError.confirmPassword}</span>
                                 )}
@@ -220,7 +247,7 @@ export default class extends Component {
                                 <Button variant="contained"
                                     size="small"
                                     color="primary"
-                                   onClick={this.onSubmit} >Sign up</Button>
+                                    onClick={this.onSubmit} >Sign up</Button>
                             </div>
                         </div>
                     </div>
