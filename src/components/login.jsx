@@ -59,7 +59,7 @@ export default class Login extends Component {
                     <div className="bottom">
                         <Link to={"/registration"} >
                             <Button size="small" className="forget-password"
-                                href="/registration"  >
+                                href="/registrationForm"  >
                                 <div className="forget-password">Create account?
                                   </div>
                             </Button>

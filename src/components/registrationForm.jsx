@@ -11,111 +11,87 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import fundooLogo from '../images/logo.svg'
 
+
 const NAME_PATTERN = RegExp(
     /^[A-Z]{1}[a-z]{2,}$/
 )
 
-const USERNAME_PATTERN = RegExp(
-    /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
+const EMAIL_PATTERN = RegExp(
+    /^[0-9a-zA-Z]+([.+_-]?[0-9a-zA-Z]+)*([@][0-9a-zA-Z]+){1}([.][a-zA-Z]{2,3}){1,2}$/
 )
 
 const PASSWORD_PATTERN = RegExp(
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}/
 )
 
-const formValid = ({ isError, ...rest }) => {
-    let isValid = false;
+const initialState = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
 
-    Object.values(isError).forEach(val => {
-        if (val.length > 0) {
-            isValid = false
-        } else {
-            isValid = true
-        }
-    });
+    firstnameError: '',
+    lastnameError: '',
+    usernameError: '',
+    passwordError: '',
+    confirmPasswordError: ''
+}
 
-    Object.values(rest).forEach(val => {
-        if (val === null) {
-            isValid = false
-        } else {
-            isValid = true
-        }
-    });
+export default class RegistrationForm extends Component {
+    state = initialState;
 
-    return isValid;
-};
-
-export default class extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            firstname: "",
-            lastname: "",
-            username: "",
-            password: "",
-            confirmPassword: "",
-            showPassword: false,
-            isError: {
-                firstname: '',
-                lastname: '',
-                username: '',
-                password: '',
-                confirmPassword: ''
-            }
-        }
-        this.initialState = this.state;
-    }
-
-    formValChange = e => {
-        e.preventDefault();
-        const { name, value } = e.target;
-        let isError = { ...this.state.isError };
-        switch (name) {
-            case "firstname":
-                isError.firstname = NAME_PATTERN.test(value)
-                    ? ""
-                    : "First Name is invalid";
-                break;
-            case "lastname":
-                isError.lastname = NAME_PATTERN.test(value)
-                    ? ""
-                    : "lastname Name is invalid";
-                break;
-            case "username":
-                isError.username = USERNAME_PATTERN.test(value)
-                    ? ""
-                    : "username Name is invalid";
-                break;
-            case "password":
-                isError.password = PASSWORD_PATTERN.test(value)
-                    ? ""
-                    : "password is invalid";
-                break;
-            default:
-                break;
-        }
+    formValChange = event => {
+        const isCheckbox = event.target.type === "checkbox";
         this.setState({
-            isError,
-            [name]: value
-        })
-
+            [event.target.name]: isCheckbox
+                ? event.target.checked
+                : event.target.value
+        });
     }
 
-    onSubmit = e => {
+    validate = () => {
+        let firstnameError = '';
+        let lastnameError = '';
+        let usernameError = '';
+        let passwordError = '';
+        let confirmPasswordError = '';
 
-        e.preventDefault();
+        if (!NAME_PATTERN.test(this.state.firstname)) {
+            firstnameError = "firstname is invalid"
+        }
+        if (!NAME_PATTERN.test(this.state.lastname)) {
+            lastnameError = "lastname is invalid "
+        }
+        if (!EMAIL_PATTERN.test(this.state.username)) {
+            usernameError = "invalid email";
+        }
+        if (! PASSWORD_PATTERN.test(this.state.password)) {
+            passwordError = "Invalid Password"
+        }
+        if (this.state.password !== this.state.confirmPassword) {
+            confirmPasswordError = "Password do not match"
+        }
 
-        if (formValid(this.state)) {
-            console.log('onsubmit')
-            console.log(this.state)
-            alert("form valid")
+        if (firstnameError|| lastnameError || usernameError || passwordError || confirmPasswordError) {
+            this.setState({ firstnameError,  lastnameError, usernameError, passwordError, confirmPasswordError});
+            return false;
+        }
 
-        } else {
-            console.log("Form is invalid!");
-            alert("form invalid")
+        return true;
+    };
+
+    onSubmit = event => {
+        event.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state);
+           
+            this.setState(initialState);
         }
     };
+
+
 
     render() {
         return (
@@ -143,11 +119,8 @@ export default class extends Component {
                                     label="First name"
                                     variant="outlined"
                                     onChange={this.formValChange} />
-                                {this.state.isError.firstname.length > 0 && (
-                                    <span className="invalid-feedback">{this.state.isError.firstname}</span>
-                                )}
+                                    <span className="invalid-feedback">{this.state.firstnameError}</span>
                             </div>
-
                             <div><TextField className="email"
                                 id="outlined-basic"
                                 name="lastname"
@@ -156,9 +129,7 @@ export default class extends Component {
                                 label="Last name"
                                 variant="outlined"
                                 onChange={this.formValChange} />
-                                {this.state.isError.lastname.length > 0 && (
-                                    <span className="invalid-feedback">{this.state.isError.lastname}</span>
-                                )}
+                                <span className="invalid-feedback">{this.state.lastnameError}</span>
                             </div>
                         </div>
                         <div className="username" >
@@ -171,15 +142,8 @@ export default class extends Component {
                                 label="Username"
                                 variant="outlined"
                                 onChange={this.formValChange} />
-
-                            <div>
-                                {this.state.isError.username.length > 0 && (
-                                    <span className="invalid-feedback">{this.state.isError.username}</span>
-                                )}
-                            </div>
-
+                                <span className="invalid-feedback">{this.state.usernameError}</span>
                         </div>
-
 
                         <div className="username-warning">You can use numbers, letters & periods</div>
 
@@ -194,9 +158,7 @@ export default class extends Component {
                                     type={this.state.showPassword ? "text" : "password"}
                                     variant="outlined"
                                     onChange={this.formValChange} />
-                                {this.state.isError.password.length > 0 && (
-                                    <span className="invalid-feedback">{this.state.isError.password}</span>
-                                )}
+                                    <span className="invalid-feedback">{this.state.passwordError}</span>
                             </div>
                             <div>
                                 <TextField className="email"
@@ -229,12 +191,7 @@ export default class extends Component {
                                         ),
                                     }}
                                 />
-                                
-                                {this.state.isError.confirmPassword.length > 0 && (
-                                    <span className="invalid-feedback">{this.state.isError.confirmPassword}</span>
-                                )}
-                                {this.state.password !== this.state.confirmPassword && (<span style={{ color: "red;" }}>Password do not match</span>
-                                )}
+                                <span className="invalid-feedback">{this.state.confirmPasswordError}</span>
                             </div>
                         </div>
                         <div className="password-warning">Use 8 or more characters with a mix of letters, numbers & symbols</div>
@@ -244,7 +201,8 @@ export default class extends Component {
                                     href="/"> Sign in instead</Button>
                             </div>
                             <div>
-                                <Button variant="contained"
+                                <Button 
+                                variant="contained"
                                     size="small"
                                     color="primary"
                                     onClick={this.onSubmit} >Sign up</Button>
