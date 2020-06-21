@@ -100,12 +100,12 @@ export default class RegistrationForm extends Component {
 
     storeData() {
         const userData = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            username: this.state.username,
-            password: this.state.password
+            firstName: this.state.firstname,
+            lastName: this.state.lastname,
+            email: this.state.username,
+            password: this.state.password,
+            service: this.state.service
         };
-
         console.log("USER", userData);
 
         service
@@ -113,10 +113,9 @@ export default class RegistrationForm extends Component {
             .then((json) => {
                 console.log("response data==>", json);
                 if (json.status === 200) {
-                    alert("Registration Sucessfull !!")
+                    alert("Registration Sucessfull")
                 }
             })
-
             .catch((err) => {
                 console.log(err);
             });
