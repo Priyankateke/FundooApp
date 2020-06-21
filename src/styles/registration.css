@@ -159,6 +159,13 @@
     color: red;
 }
 
+.service {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	font-size: 20px !important;
+}
+
 @media only screen and (max-width: 414px) {
     .registration-container{
         width:100%;

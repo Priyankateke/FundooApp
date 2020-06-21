@@ -9,8 +9,14 @@ import Visibility from '@material-ui/icons/Visibility';
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import fundooLogo from '../images/logo.svg'
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import fundooLogo from '../assets/logo.svg'
 
+import FundooService from "../services/service";
+let service = new FundooService();
 
 const NAME_PATTERN = RegExp(
     /^[A-Z]{1}[a-z]{2,}$/
@@ -66,15 +72,15 @@ export default class RegistrationForm extends Component {
         if (!EMAIL_PATTERN.test(this.state.username)) {
             usernameError = "invalid email";
         }
-        if (! PASSWORD_PATTERN.test(this.state.password)) {
+        if (!PASSWORD_PATTERN.test(this.state.password)) {
             passwordError = "Invalid Password"
         }
         if (this.state.password !== this.state.confirmPassword) {
             confirmPasswordError = "Password do not match"
         }
 
-        if (firstnameError|| lastnameError || usernameError || passwordError || confirmPasswordError) {
-            this.setState({ firstnameError,  lastnameError, usernameError, passwordError, confirmPasswordError});
+        if (firstnameError || lastnameError || usernameError || passwordError || confirmPasswordError) {
+            this.setState({ firstnameError, lastnameError, usernameError, passwordError, confirmPasswordError });
             return false;
         }
 
@@ -86,12 +92,36 @@ export default class RegistrationForm extends Component {
         const isValid = this.validate();
         if (isValid) {
             console.log(this.state);
-           
+            this.storeData();
             this.setState(initialState);
         }
     };
 
 
+    storeData() {
+        const userData = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        console.log("USER", userData);
+
+        service
+            .Registration(userData)
+            .then((json) => {
+                console.log("response data==>", json);
+                if (json.status === 200) {
+                    alert("Registration Sucessfull !!")
+                }
+            })
+
+            .catch((err) => {
+                console.log(err);
+            });
+        this.props.history.push("/");
+    }
 
     render() {
         return (
@@ -119,7 +149,7 @@ export default class RegistrationForm extends Component {
                                     label="First name"
                                     variant="outlined"
                                     onChange={this.formValChange} />
-                                    <span className="invalid-feedback">{this.state.firstnameError}</span>
+                                <span className="invalid-feedback">{this.state.firstnameError}</span>
                             </div>
                             <div><TextField className="email"
                                 id="outlined-basic"
@@ -142,7 +172,7 @@ export default class RegistrationForm extends Component {
                                 label="Username"
                                 variant="outlined"
                                 onChange={this.formValChange} />
-                                <span className="invalid-feedback">{this.state.usernameError}</span>
+                            <span className="invalid-feedback">{this.state.usernameError}</span>
                         </div>
 
                         <div className="username-warning">You can use numbers, letters & periods</div>
@@ -158,7 +188,7 @@ export default class RegistrationForm extends Component {
                                     type={this.state.showPassword ? "text" : "password"}
                                     variant="outlined"
                                     onChange={this.formValChange} />
-                                    <span className="invalid-feedback">{this.state.passwordError}</span>
+                                <span className="invalid-feedback">{this.state.passwordError}</span>
                             </div>
                             <div>
                                 <TextField className="email"
@@ -195,14 +225,43 @@ export default class RegistrationForm extends Component {
                             </div>
                         </div>
                         <div className="password-warning">Use 8 or more characters with a mix of letters, numbers & symbols</div>
+                        <div>
+                            <div className="service">
+                                <RadioGroup
+                                    aria-label="service"
+                                    name="service"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}
+                                >
+                                   <h6>Service:</h6>
+                                    <div class="radio">
+                                        <FormControlLabel
+                                            value="Basic"
+                                            defaultValue={this.state.service}
+                                            onChange={this.formValChange}
+                                            control={<Radio color="primary" fontSize="17px" />}
+                                            label="password"
+                                            labelPlacement="end"
+                                        />
+                                        <FormControlLabel
+                                            value="Advance"
+                                            defaultValue={this.state.service}
+                                            onChange={this.formValChange}
+                                            control={<Radio color="primary" fontSize="17px" />}
+                                            label="Advance"
+                                        />
+                                    </div>
+                                </RadioGroup>
+                            </div>
+                        </div>
                         <div className="buttom-button">
                             <div>
                                 <Button size="small" color="primary"
                                     href="/"> Sign in instead</Button>
                             </div>
                             <div>
-                                <Button 
-                                variant="contained"
+                                <Button
+                                    variant="contained"
                                     size="small"
                                     color="primary"
                                     onClick={this.onSubmit} >Sign up</Button>
