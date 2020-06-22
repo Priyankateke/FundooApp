@@ -11,5 +11,10 @@ class Service {
       console.log(" data ", data);
       return axios.post(apiUrl + "/login", data);
     }
+    ForgotPassword(data) {
+      console.log(" data ", data);
+      return axios.post(apiUrl + "/reset", data);
+    }
+
   }
   export default Service;

@@ -240,7 +240,7 @@ export default class Registration extends Component {
                                             defaultValue={this.state.service}
                                             onChange={this.formValChange}
                                             control={<Radio color="primary" fontSize="17px" />}
-                                            label="password"
+                                            label="Basic"
                                             labelPlacement="end"
                                         />
                                         <FormControlLabel
