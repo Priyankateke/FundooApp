@@ -36,8 +36,8 @@ export default class Login extends Component {
     };
 
     submitSignIn = () => {
-        let emailError="";
-        let passwordError="";
+        // let emailError="";
+        // let passwordError="";
 
         if (!EMAIL_PATTERN.test(this.state.email)) {
             this.setState = {
@@ -94,8 +94,10 @@ export default class Login extends Component {
                                 id="outlined-basic"
                                 size="small"
                                 margin="dense"
+                                name="email"
                                 label="Email"
                                 variant="outlined"
+                            
                                 onChange={this.handleChange}
                             />
                             <span className="invalid-feedback">{this.state.emailError}</span>
@@ -105,6 +107,7 @@ export default class Login extends Component {
                             size="small"
                             margin="dense"
                             id="outlined-basic"
+                            name="password"
                             label="password"
                             type="password"
                             variant="outlined"
@@ -136,7 +139,7 @@ export default class Login extends Component {
                                 variant="contained"
                                 size="medium"
                                 color="primary"
-                                onClick={this.state.submitSignIn}>Sign In</Button>
+                                onClick={this.submitSignIn}>Sign In</Button>
                         </div>
                     </div>
                 </CardContent>
