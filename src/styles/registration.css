@@ -72,8 +72,8 @@
     margin-right: 10px;
 }
 .firstname-text {
-    text-align: center;
-    align-items: center;
+    /* text-align: center;
+    align-items: center; */
     width: 100%;
     
 }
@@ -85,8 +85,6 @@
 
 .username-textfield {
     width:100%;
-    
-
 }
 
 .username {
@@ -167,6 +165,12 @@
 	font-size: 20px !important;
 }
 
+@media screen and (max-width: 1024px) {
+    .registration-container {
+        border: none !important
+    } 
+}
+
 @media only screen and (max-width: 414px) {
     .registration-container{
         width:100%;
@@ -188,3 +192,4 @@
     }
 
 }
+

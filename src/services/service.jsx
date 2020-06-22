@@ -7,5 +7,9 @@ class Service {
       console.log(" data ", data);
       return axios.post(apiUrl + "/userSignUp", data);
     }
+    Login(data) {
+      console.log(" data ", data);
+      return axios.post(apiUrl + "/login", data);
+    }
   }
   export default Service;
