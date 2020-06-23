@@ -1,5 +1,4 @@
-.registration-container {
-    
+.registration-container {    
     padding: 48px 40px 36px;
     margin-top:30px ;
     width: 740px;
@@ -65,11 +64,15 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .firstname {
     margin-right: 10px;
+
+    /* width: 100%; */
+    
 }
 .firstname-text {
     /* text-align: center;
@@ -186,28 +189,70 @@
 }
 
 @media screen and (max-width: 414px ) {
-    
-}
+    .registration-container {
+        width: 100%;
+        margin-top: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: none !important;
+       
+    }
 
-@media only screen and (max-width: 414px) {
-    .registration-container{
-        width:100%;
+    .registration-form {
+
+        width: 330px;
+        height: 430px;
+        padding: 0px;
+        padding-right: 0px;
         display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    }   
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
     .fundoo-image-container {
         display: none;
     }
-
     .first-last-name {
-        margin-top: 20px;
+        margin-top: 40px;
         height: 35px;
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-
+    .password-confirm {
+        margin-top: 30px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
 }
+
+/* @media only screen and (max-width: 414px) {
+    .registration-container{
+        width:100%;
+        display: flex;
+    flex-direction: row;
+    border: none !i;
+    margin-top: 40px;
+    /* justify-content: space-around; */
+    /* }   
+    .fundoo-image-container {
+        display: none !mportant;
+    } */
+
+    /* .first-last-name {
+        margin-top: 20px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    } */
+
+/* }  */
 

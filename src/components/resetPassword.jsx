@@ -163,7 +163,9 @@ export default class ResetPassword extends Component {
             variant="contained"
             color="primary"
             style={{ fontSize: "12px", width: "90px", padding: "7px 0px" }}
-            onClick={this.reset}
+            // onClick={this.reset}
+            onClick={()=>this.reset}
+
           >Submit</Button>
           <Button
             className="cancel-button"
