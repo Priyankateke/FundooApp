@@ -53,7 +53,7 @@ export default class ResetPassword extends Component {
               snackbarOpen: true,
               snackbarMsg: "Password reset Sucessfull"
             });
-            // alert("Password reset Sucessfull");
+            
           }
           this.props.history.push("/");
         })
@@ -134,7 +134,6 @@ export default class ResetPassword extends Component {
             id="outlined-adornment-password"
             variant="outlined"
             name="password"
-            // type="password"
             type={this.state.showPassword ? "text" : "password"}
             label="Confirm Password"
             value={this.state.confirmPassword}

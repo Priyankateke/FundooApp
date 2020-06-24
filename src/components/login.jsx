@@ -7,6 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { BrowserRouter as Link } from 'react-router-dom';
+import IconButton from "@material-ui/core/IconButton";
+import { Snackbar } from "@material-ui/core";
+
 import FundooService from "../services/service";
 let service = new FundooService();
 
@@ -25,7 +28,9 @@ export default class Login extends Component {
             email: "",
             password: "",
             emailError: "",
-            passwordError: ""
+            passwordError: "",
+            snackbarOpen: false,
+            snackbarMessage: "",
         }
     }
 
@@ -40,6 +45,11 @@ export default class Login extends Component {
            password: event.target.value,
         });
     };
+
+    snackbarClose = () => {
+        this.setState({ snackbarOpen: false });
+    };
+
 
     signIn = () => {
       
@@ -67,7 +77,11 @@ export default class Login extends Component {
             .then((json) => {
                 console.log("responce data==>", json);
                 if (json.status === 200) {
-                    alert("login successful")
+                    this.setState({
+                        snackbarOpen: true,
+                        snackbarMessage: "login successful",
+                    });
+                    
                 }
             })
             .catch((err) => {
@@ -90,6 +104,23 @@ export default class Login extends Component {
                         <span className="o">o</span>
                         <span className="u">o</span>
                     </Typography>
+
+                    <Snackbar
+                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                    open={this.state.snackbarOpen}
+                    autoHideDuration={6000}
+                    onClose={this.snackbarClose}
+                    message={<span className="Snackbar">{this.state.snackbarMessage}</span>}
+                    action={
+                        <IconButton
+                            key="close"
+                            arial-label="close"
+                            color="inherit"
+                            onClick={this.snackbarClose}
+                        ></IconButton>
+                    }
+                />
+
                     <Typography className="sign-in">
                         <span>Sign in</span>
                     </Typography>
