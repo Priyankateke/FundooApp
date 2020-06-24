@@ -1,6 +1,6 @@
 .registration-container {    
-    /* padding: 48px 40px 36px; */
-    /* margin-top:30px ; */
+    padding: 48px 40px 36px; 
+    margin-top:30px ;
     width: 740px;
     height: 500px;
     display: flex;
@@ -45,7 +45,6 @@
 
 .create-account {
     padding-top: 16px;
-    
 }
 
 .registration-form {
@@ -70,15 +69,10 @@
 }
 
 .firstname {
-    margin-right: 10px;
-
-  
+    margin-right: 10px;  
 }
 .firstname-text {   
- /* text-align: center;
-    align-items: center; */
     width: 100%;
-    
 }
 
 .username-textfield {
@@ -88,19 +82,15 @@
 .username {
     width:100%;
     margin-top: 40px;
-  
-  
 }
 
 
 .username-label {
-  
     text-align: center;
 }
 
 .username-warning {
     opacity: 1;
-   
     font-style: normal;
     font-variant-ligatures: normal;
     font-variant-caps: normal;
@@ -136,7 +126,6 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-  
 }
 
 .logo-caption {
@@ -144,7 +133,6 @@
 }
 
 .password-confirm {
-  
     height: 35px;
     width: 100%;
     display: flex;
@@ -165,10 +153,8 @@
 
 @media screen and (max-width: 1024px) {
     .registration-container {
-        /* border: none !important; */
         padding-left: 10px;
         padding-right: 0px;
-       /* margin-top: 300px; */
     } 
 
 }
@@ -226,28 +212,4 @@
     }
     
 }
-
-/* @media only screen and (max-width: 414px) {
-    .registration-container{
-        width:100%;
-        display: flex;
-    flex-direction: row;
-    border: none !i;
-    margin-top: 40px;
-    /* justify-content: space-around; */
-    /* }   
-    .fundoo-image-container {
-        display: none !mportant;
-    } */
-
-    /* .first-last-name {
-        margin-top: 20px;
-        height: 35px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    } */
-
-/* }  */
 
