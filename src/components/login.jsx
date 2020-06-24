@@ -29,16 +29,20 @@ export default class Login extends Component {
         }
     }
 
-    handleChange = (event) => {
+    handleChangeEmail = (event) => {
         this.setState({
-            [event.target.name]: event.target.value,
+            email: event.target.value,
         });
     };
 
-    submitSignIn = () => {
-        // let emailError="";
-        // let passwordError="";
+    handleChangePassword =(event) => {
+        this.setState({
+           password: event.target.value,
+        });
+    };
 
+    signIn = () => {
+      
         if (!EMAIL_PATTERN.test(this.state.email)) {
             this.setState = {
                 emailError: "invalid email"
@@ -49,10 +53,11 @@ export default class Login extends Component {
                 passwordError: "Invalid Password"
             }
         }
-        this.storeData()
+        this.signInData()
+       
     }
 
-    storeData = () => {
+    signInData = () => {
         const user = {
             email: this.state.email,
             password: this.state.password,
@@ -68,6 +73,7 @@ export default class Login extends Component {
             .catch((err) => {
                 console.log(err);
             });
+            this.props.history.push("/dashboard");
 
         alert("sign in")
     }
@@ -98,7 +104,7 @@ export default class Login extends Component {
                                 label="Email"
                                 variant="outlined"
                             
-                                onChange={this.handleChange}
+                                onChange={this.handleChangeEmail}
                             />
                             <span className="invalid-feedback">{this.state.emailError}</span>
                         </div>
@@ -111,12 +117,11 @@ export default class Login extends Component {
                             label="password"
                             type="password"
                             variant="outlined"
-                            onChange={this.handleChange}
+                            onChange={this.handleChangePassword}
                         />
                             <span className="invalid-feedback">{this.state.passwordError}</span>
                         </div>
-                        {/* <div className="forget-password" >Forget password?</div> */}
-
+                      
                         <div className="forget-password">
                             <Button size="small"
                                 href="/forgetPassword"  >
@@ -139,7 +144,7 @@ export default class Login extends Component {
                                 variant="contained"
                                 size="medium"
                                 color="primary"
-                                onClick={this.submitSignIn}>Sign In</Button>
+                                onClick={this.signIn}>Sign In</Button>
                         </div>
                     </div>
                 </CardContent>

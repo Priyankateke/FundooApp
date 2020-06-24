@@ -1,10 +1,11 @@
 .registration-container {    
-    padding: 48px 40px 36px;
-    margin-top:30px ;
+    /* padding: 48px 40px 36px; */
+    /* margin-top:30px ; */
     width: 740px;
-    height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -71,18 +72,12 @@
 .firstname {
     margin-right: 10px;
 
-    /* width: 100%; */
-    
+  
 }
-.firstname-text {
-    /* text-align: center;
+.firstname-text {   
+ /* text-align: center;
     align-items: center; */
     width: 100%;
-    
-}
-
-
-#outlined-basic {
     
 }
 
@@ -173,7 +168,7 @@
         /* border: none !important; */
         padding-left: 10px;
         padding-right: 0px;
-       margin-top: 300px;
+       /* margin-top: 300px; */
     } 
 
 }

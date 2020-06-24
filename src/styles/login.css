@@ -8,7 +8,7 @@
 @media (min-width: 411px) {
     .login-card {
         padding:36px 48px 40px 36px;
-        widows: 200px;
+        /* width: 200px; */
     }
 }
 

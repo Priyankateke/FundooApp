@@ -49,12 +49,16 @@ export default class ResetPassword extends Component {
         .then((json) => {
           console.log("responce data==>", json);
           if (json.status === 204) {
-            alert("Password reset Sucessfull !!");
+            this.setState({
+              snackbarOpen: true,
+              snackbarMsg: "Password reset Sucessfull"
+            });
+            // alert("Password reset Sucessfull");
           }
           this.props.history.push("/");
         })
         .catch((err) => {
-          alert("Token is not valid,again it will !!");
+          alert("Token is not valid");
         });
     }
   };
@@ -95,7 +99,6 @@ export default class ResetPassword extends Component {
             id="outlined-adornment-password"
             variant="outlined"
             name="newPassword"
-            // type="password"
             label="New Password"
             inputProps={{ style: { fontSize: "16px" } }}
             type={this.state.showPassword ? "text" : "password"}
@@ -163,7 +166,6 @@ export default class ResetPassword extends Component {
             variant="contained"
             color="primary"
             style={{ fontSize: "12px", width: "90px", padding: "7px 0px" }}
-            // onClick={this.reset}
             onClick={()=>this.reset}
 
           >Submit</Button>

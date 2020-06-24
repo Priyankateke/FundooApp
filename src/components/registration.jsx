@@ -48,7 +48,7 @@ const initialState = {
 export default class Registration extends Component {
     state = initialState;
 
-    formValChange = event => {
+    handleChange = event => {
         const isCheckbox = event.target.type === "checkbox";
         this.setState({
             [event.target.name]: isCheckbox
@@ -57,7 +57,7 @@ export default class Registration extends Component {
         });
     }
 
-    validate = () => {
+    validateTextField = () => {
         let firstnameError = '';
         let lastnameError = '';
         let usernameError = '';
@@ -84,22 +84,21 @@ export default class Registration extends Component {
             this.setState({ firstnameError, lastnameError, usernameError, passwordError, confirmPasswordError });
             return false;
         }
-
         return true;
     };
 
-    onSubmit = event => {
+    signUp = event => {
         event.preventDefault();
-        const isValid = this.validate();
+        const isValid = this.validateTextField();
         if (isValid) {
             console.log(this.state);
-            this.storeData();
+            this.registerData();
             this.setState(initialState);
         }
     };
 
 
-    storeData() {
+    registerData() {
         const userData = {
             firstName: this.state.firstname,
             lastName: this.state.lastname,
@@ -125,20 +124,20 @@ export default class Registration extends Component {
 
     render() {
         return (
-            <div >
+           
                 <Card className="registration-container" variant="outlined">
                     <div className="registration-form" variant="outlined">
-                        <Typography className="fundoo-font-registration">
+                        <div className="fundoo-font-registration">
                             <span className="f">F</span>
                             <span className="u">u</span>
                             <span className="n">n</span>
                             <span className="f">d</span>
                             <span className="o">o</span>
                             <span className="u">o</span>
-                        </Typography>
+                        </div>
 
-                        <Typography className="create-account" variant="h5" component="h2" >
-                            Create your Fundoo Account</Typography>
+                        <div className="create-account" variant="h5" component="h2" >
+                            Create your Fundoo Account</div>
                         <div className="first-last-name">
                             <div className="firstname">
                                 <TextField className="firstname-text"
@@ -148,7 +147,7 @@ export default class Registration extends Component {
                                     name="firstname"
                                     label="First name"
                                     variant="outlined"
-                                    onChange={this.formValChange} />
+                                    onChange={this.handleChange} />
                                 <span className="invalid-feedback">{this.state.firstnameError}</span>
                             </div>
                             <div><TextField className="email"
@@ -158,7 +157,7 @@ export default class Registration extends Component {
                                 margin="dense"
                                 label="Last name"
                                 variant="outlined"
-                                onChange={this.formValChange} />
+                                onChange={this.handleChange} />
                                 <span className="invalid-feedback">{this.state.lastnameError}</span>
                             </div>
                         </div>
@@ -171,7 +170,7 @@ export default class Registration extends Component {
                                 name="username"
                                 label="Username"
                                 variant="outlined"
-                                onChange={this.formValChange} />
+                                onChange={this.handleChange} />
                             <span className="invalid-feedback">{this.state.usernameError}</span>
                         </div>
 
@@ -187,7 +186,7 @@ export default class Registration extends Component {
                                     label="Password"
                                     type={this.state.showPassword ? "text" : "password"}
                                     variant="outlined"
-                                    onChange={this.formValChange} />
+                                    onChange={this.handleChange} />
                                 <span className="invalid-feedback">{this.state.passwordError}</span>
                             </div>
                             <div>
@@ -199,7 +198,7 @@ export default class Registration extends Component {
                                     label="Confirm"
                                     type={this.state.showPassword ? "text" : "password"}
                                     variant="outlined"
-                                    onChange={this.formValChange}
+                                    onChange={this.handleChange}
                                     defaultValue={this.state.confirmPassword}
                                     InputProps={{
                                         endAdornment: (
@@ -238,7 +237,7 @@ export default class Registration extends Component {
                                         <FormControlLabel
                                             value="Basic"
                                             defaultValue={this.state.service}
-                                            onChange={this.formValChange}
+                                            onChange={this.handleChange}
                                             control={<Radio color="primary" fontSize="17px" />}
                                             label="Basic"
                                             labelPlacement="end"
@@ -246,7 +245,7 @@ export default class Registration extends Component {
                                         <FormControlLabel
                                             value="Advance"
                                             defaultValue={this.state.service}
-                                            onChange={this.formValChange}
+                                            onChange={this.handleChange}
                                             control={<Radio color="primary" fontSize="17px" />}
                                             label="Advance"
                                         />
@@ -264,7 +263,7 @@ export default class Registration extends Component {
                                     variant="contained"
                                     size="small"
                                     color="primary"
-                                    onClick={this.onSubmit} >Sign up</Button>
+                                    onClick={this.signUp} >Sign up</Button>
                             </div>
                         </div>
                     </div>
@@ -275,7 +274,7 @@ export default class Registration extends Component {
                         <figcaption className='logo-caption'>working for you.</figcaption>
                     </div>
                 </Card>
-            </div >
+           
         )
     }
 }
