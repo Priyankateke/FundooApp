@@ -178,7 +178,7 @@ export default class Registration extends Component {
                                 onChange={this.handleChange} />
                             <span className="invalid-feedback">{this.state.firstnameError}</span>
                         </div>
-                        <div><TextField className="email"
+                        <div className="firstname"><TextField className="email"
                             id="outlined-basic"
                             name="lastname"
                             size="small"

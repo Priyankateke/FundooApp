@@ -18,19 +18,7 @@
     }
 }
 
-@media screen and (max-width: 1024px){
-    .loginbox{
-       margin-top:450px !important;
-       width: 600px;
-       height: 700px;
-    }
-    body {
-        padding-top: 40px;
-    }
-}
-
 .fundoo-font {
-
     padding-top: 15px;
     text-align: center;
 }
