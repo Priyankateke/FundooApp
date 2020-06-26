@@ -3,7 +3,6 @@ import '../App.css'
 import '../styles/registration.css'
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import IconButton from "@material-ui/core/IconButton";
@@ -12,7 +11,6 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
 import fundooLogo from '../assets/logo.svg'
 import { Snackbar } from "@material-ui/core";
 
