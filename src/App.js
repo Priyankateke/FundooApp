@@ -7,7 +7,8 @@ import Login from './components/login.jsx';
 import Registration from './components/registration.jsx'
 import ForgetPassword from './components/forgetPassword.jsx'
 import ResetPassword from './components/resetPassword'
-import Dashboard from './components/dashboard.jsx'
+import Dashboard from './components/dashboard/dashboard.jsx'
+import DashboardContainer from './components/dashboard/dashboardContainer'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/resetpassword' component={ResetPassword}></Route>
       <Route exact path='/registration' component={Registration}></Route>     
       <Route exact path='/dashboard' component={Dashboard}></Route>
+      <Route exact path='/dashboardContainer' component={DashboardContainer}></Route>
     </Router>
   );
 }

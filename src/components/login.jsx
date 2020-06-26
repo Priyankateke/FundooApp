@@ -87,7 +87,7 @@ export default class Login extends Component {
             .catch((err) => {
                 console.log(err);
             });
-            this.props.history.push("/dashboard");
+            this.props.history.push("/dashboardContainer");
 
         alert("sign in")
     }
