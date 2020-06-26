@@ -150,6 +150,11 @@ const styles = theme => ({
       width: theme.spacing.unit * 9 + 1,
     },
   },
+  tools: {
+    marginTop: "9px",
+    marginBottom: "9px",
+    justifyContent: ""
+  },
 });
 
 class Dashboard extends React.Component {
@@ -189,6 +194,10 @@ class Dashboard extends React.Component {
   handleViewClick = () => {
     this.setState({ view: !this.state.view });
   }
+  handleRefresh = () => {
+    window.location.reload();
+  }
+
 
   // render
   render() {
@@ -227,7 +236,7 @@ class Dashboard extends React.Component {
             </IconButton>
             <img className={classes.logo} src={keep} alt="Logo" />
             <Typography variant="h6" color="inherit" noWrap>
-              FundooNote
+              Fundoo
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -237,11 +246,13 @@ class Dashboard extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Refresh />
-              </IconButton>
+              <Tooltip title="Refresh" className={classes.tools}>
+                <IconButton color="inherit" onClick={this.handleRefresh} className={classes.large}>
+                  <Refresh />
+                </IconButton>
+              </Tooltip>
 
-              <div>
+              <div className={classes.tools}>
                 <Tooltip title={this.state.view ? "Grid View" : "List View"}>
                   <IconButton
                     color="inherit"
@@ -252,9 +263,12 @@ class Dashboard extends React.Component {
                   </IconButton>
                 </Tooltip>
               </div>
-              <IconButton color="inherit">
-                <NotificationsIcon />
-              </IconButton>
+              <Tooltip title="Notification">
+                <IconButton color="inherit">
+                  <NotificationsIcon />
+                </IconButton>
+              </Tooltip>
+
               <IconButton
                 edge="end"
                 aria-label="account user"
