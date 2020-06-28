@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
     justify-content: space-around;
 }
 
@@ -22,3 +23,35 @@
 .icons {
     flex-grow: 0.2;
 }
+
+.expandedContainer {
+    width: 600px;
+    height: 135px;
+    border: solid 1px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 10px 15px 15px;
+}
+
+.summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25rem;
+    color:gray; 
+}
+
+.noteIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
