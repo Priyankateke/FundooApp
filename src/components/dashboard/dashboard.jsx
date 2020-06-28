@@ -16,16 +16,17 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
 import Delete from '@material-ui/icons/Delete';
-import Alarm from '@material-ui/icons/Alarm';
-import Notes from '@material-ui/icons/Notes';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Grid from '@material-ui/icons/Apps'
 import ListIcon from '@material-ui/icons/List'
-
+// import CardNote from './createnote'
+import NewNote from './newNote'
+import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
+import '../../styles/createNote.css'
 
 const drawerWidth = 240;
 
@@ -37,16 +38,7 @@ const styles = theme => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
+      backgroundColor: "#fb0;",
     }),
   },
   menuButton: {
@@ -65,10 +57,14 @@ const styles = theme => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    height: '46px',
+    // borderRadius: theme.shape.borderRadius,
+    borderRadius:'8px',
+    
+    backgroundColor: fade(theme.palette.common.black, 0.1),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.black, 0.05),
+      
     },
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
@@ -77,6 +73,7 @@ const styles = theme => ({
       marginLeft: theme.spacing.unit * 3,
       width: 'auto',
     },
+    color: "#000000"
   },
   avatar: {
     margin: 10,
@@ -89,9 +86,11 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: "#000000"
   },
   content: {
     flexGrow: 1,
+    marginTop: '100px',  
     padding: theme.spacing.unit * 3,
   },
 
@@ -155,6 +154,20 @@ const styles = theme => ({
     marginBottom: "9px",
     justifyContent: ""
   },
+  color: {
+    backgroundColor: "white"
+  },
+
+  multilineColor: {
+    color: '#000000'
+  },
+
+  logo: {
+    width:'40px',
+    height:'40px'
+  }
+
+
 });
 
 class Dashboard extends React.Component {
@@ -163,6 +176,8 @@ class Dashboard extends React.Component {
     this.state = {
       anchorEl: null,
       open: false,
+      view :false,
+      typeOfNote:'Keep'
     };
   }
 
@@ -198,6 +213,10 @@ class Dashboard extends React.Component {
     window.location.reload();
   }
 
+  handleToggle = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
 
   // render
   render() {
@@ -218,13 +237,21 @@ class Dashboard extends React.Component {
       </Menu>
     );
     return (
+      <div className="main">
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
           position="fixed"
-          className={classNames(classes.appBar, { [classes.appBarShift]: this.state.open, })}>
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
+          // className={classNames(classes.appBar, { [classes.appBarShift]: this.state.open, })}>
+          className={classNames(classes.appBar, classes.color, { [classes.appBarShift]: this.state.open, })}>
+          {/* <Toolbar disableGutters={!this.state.open}> */}
+          <Toolbar >
+          <IconButton className={classes.multilineColor}
+             onClick={this.handleToggle}
+              aria-label="Open drawer">
+            <MenuIcon />
+            </IconButton>
+            {/* <IconButton
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerOpen}
@@ -233,21 +260,21 @@ class Dashboard extends React.Component {
               })}
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <img className={classes.logo} src={keep} alt="Logo" />
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit" className={classes.multilineColor}>
               Fundoo
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
-              <InputBase placeholder="Search…" classes={{ root: classes.inputRoot, input: classes.inputInput, }} />
+              <InputBase placeholder="Search" classes={{ root: classes.inputRoot, input: classes.inputInput, }} />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <Tooltip title="Refresh" className={classes.tools}>
-                <IconButton color="inherit" onClick={this.handleRefresh} className={classes.large}>
+                <IconButton color="inherit" onClick={this.handleRefresh} className={classes.large, classes.multilineColor}>
                   <Refresh />
                 </IconButton>
               </Tooltip>
@@ -257,6 +284,7 @@ class Dashboard extends React.Component {
                   <IconButton
                     color="inherit"
                     onClick={this.handleViewClick}
+                    className={classes.multilineColor}
                     aria-label="List/Grid"
                   >
                     {this.state.view ? <Grid /> : <ListIcon />}
@@ -264,12 +292,13 @@ class Dashboard extends React.Component {
                 </Tooltip>
               </div>
               <Tooltip title="Notification">
-                <IconButton color="inherit">
+                <IconButton className={classes.multilineColor}>
                   <NotificationsIcon />
                 </IconButton>
               </Tooltip>
 
               <IconButton
+                className={classes.multilineColor}
                 edge="end"
                 aria-label="account user"
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
@@ -293,36 +322,38 @@ class Dashboard extends React.Component {
               [classes.drawerClose]: !this.state.open,
             }),
           }}
-          open={this.state.open}>
-          <div className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-            </IconButton>
-          </div>
+          open={this.state.open}>      
+          <div className={classes.toolbar}/>
           <Divider />
           <List>
             <ListItem button key='Notes' onClick={(event) => { this.changeView(event, 'Keep') }}>
-              <ListItemIcon><Notes /></ListItemIcon>
+              <ListItemIcon><EmojiObjectsOutlinedIcon /></ListItemIcon>
               <ListItemText>Notes</ListItemText>
             </ListItem>
             <ListItem button key='Reminder'>
-              <ListItemIcon><Alarm /></ListItemIcon>
+              <ListItemIcon><NotificationsNoneOutlinedIcon /></ListItemIcon>
               <ListItemText>Reminder</ListItemText>
             </ListItem>
-          </List>
-          <Divider />
-          <List>
-
+            <ListItem button key='Edit'>
+              <ListItemIcon><EditOutlinedIcon /></ListItemIcon>
+              <ListItemText>Edit labels</ListItemText>
+            </ListItem>
+         
             <ListItem button key='Archive' onClick={(event) => { this.changeView(event, 'Archive') }}>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemIcon><ArchiveOutlinedIcon /></ListItemIcon>
               <ListItemText>Archive</ListItemText>
             </ListItem>
             <ListItem button key='Delete' onClick={(event) => { this.changeView(event, 'Trash') }}>
               <ListItemIcon><Delete /></ListItemIcon>
               <ListItemText>Trash</ListItemText>
             </ListItem>
-          </List>
+            </List>
         </Drawer>
+        <main className={classes.content}>
+          <div className={classes.toolar}/>
+          <NewNote/>
+        </main>
+      </div>
       </div>
     );
   }

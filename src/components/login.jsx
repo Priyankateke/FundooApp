@@ -81,15 +81,16 @@ export default class Login extends Component {
                         snackbarOpen: true,
                         snackbarMessage: "login successful",
                     });
+                    this.props.history.push("/dashboard");
                     
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
-            this.props.history.push("/dashboard");
+            
 
-        alert("sign in")
+        // alert("sign in")
     }
 
     render() {

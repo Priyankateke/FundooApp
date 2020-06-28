@@ -124,12 +124,13 @@ export default class Registration extends Component {
                         snackbarOpen: true,
                         snackbarMsg: "Registration Sucessfull",
                     });
+                    this.props.history.push("/");
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
-        this.props.history.push("/");
+       
     }
 
     render() {
