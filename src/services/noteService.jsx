@@ -1,11 +1,11 @@
 import axios from "axios";
 const apiUrl = "http://fundoonotes.incubation.bridgelabz.com/api/notes";
 
-class NoteService{
+export default class NoteService {
     createNotes(data) {
-        let token=localStorage.getItem('token')
+        let token = localStorage.getItem('token')
         console.log("get axios post data")
-        return axios.post(apiUrl + "/addNotes", data,{
+        return axios.post(apiUrl + "/addNotes", data, {
             headers: {
                 "Authorization": token,
             }
@@ -13,8 +13,13 @@ class NoteService{
     }
 
     getNoteList() {
-        
+        let token = localStorage.getItem('token')
+        console.log("get note data")
+        return axios.get(apiUrl + "/getNotesList", {
+            headers: {
+                "Authorization": token,
+            }
+        });
     }
 }
 
-export default NoteService

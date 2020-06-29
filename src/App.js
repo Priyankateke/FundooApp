@@ -9,6 +9,7 @@ import ForgetPassword from './components/forgetPassword.jsx'
 import ResetPassword from './components/resetPassword'
 import Dashboard from './components/dashboard/dashboard.jsx'
 import card from './components/dashboard/newNote'
+import GetAllNotes from './components/dashboard/getAllNotes'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path='/registration' component={Registration}></Route>     
       <Route path='/dashboard' component={Dashboard}></Route>
       <Route path="/note" component={card} />
+      <Route path="/dashboard/notes" component={GetAllNotes} />
     </Router>
   );
 }

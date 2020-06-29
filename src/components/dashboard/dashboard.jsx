@@ -20,7 +20,6 @@ import Divider from '@material-ui/core/Divider';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/icons/Apps'
 import ListIcon from '@material-ui/icons/List'
-// import CardNote from './createnote'
 import NewNote from './newNote'
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
@@ -58,7 +57,6 @@ const styles = theme => ({
   search: {
     position: 'relative',
     height: '46px',
-    // borderRadius: theme.shape.borderRadius,
     borderRadius:'8px',
     
     backgroundColor: fade(theme.palette.common.black, 0.1),
@@ -166,8 +164,6 @@ const styles = theme => ({
     width:'40px',
     height:'40px'
   }
-
-
 });
 
 class Dashboard extends React.Component {
@@ -242,25 +238,13 @@ class Dashboard extends React.Component {
         <CssBaseline />
         <AppBar
           position="fixed"
-          // className={classNames(classes.appBar, { [classes.appBarShift]: this.state.open, })}>
           className={classNames(classes.appBar, classes.color, { [classes.appBarShift]: this.state.open, })}>
-          {/* <Toolbar disableGutters={!this.state.open}> */}
           <Toolbar >
           <IconButton className={classes.multilineColor}
              onClick={this.handleToggle}
               aria-label="Open drawer">
             <MenuIcon />
             </IconButton>
-            {/* <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, {
-                [classes.hide]: this.state.open,
-              })}
-            >
-              <MenuIcon />
-            </IconButton> */}
             <img className={classes.logo} src={keep} alt="Logo" />
             <Typography variant="h6" color="inherit" className={classes.multilineColor}>
               Fundoo
