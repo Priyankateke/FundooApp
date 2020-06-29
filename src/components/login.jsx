@@ -50,6 +50,14 @@ export default class Login extends Component {
         this.setState({ snackbarOpen: false });
     };
 
+    handleForgotPassword=()=> {
+        this.props.history.push('/forgetPassword')
+    }
+
+    handleRegister=()=>{
+        this.props.history.push('/registration')
+    }
+
 
     signIn = () => {
       
@@ -74,14 +82,22 @@ export default class Login extends Component {
         };
         service
             .Login(user)
-            .then((json) => {
-                console.log("responce data==>", json);
-                if (json.status === 200) {
+            .then((response) => {
+                console.log("responce data==>", response);
+                localStorage.setItem("token",response.data.id);
+                localStorage.setItem("firstName",response.data.firstName);
+                localStorage.setItem("lastName",response.data.lastName);
+                localStorage.setItem("email",response.data.email); 
+                localStorage.setItem("image",response.data.imageUrl); 
+                localStorage.setItem("userId",response.data.userId); 
+                this.props.history.push("/dashboard");
+
+                if (response.status === 200) {
                     this.setState({
                         snackbarOpen: true,
                         snackbarMessage: "login successful",
                     });
-                    this.props.history.push("/dashboard");
+                    // this.props.history.push("/dashboard");
                     
                 }
             })
@@ -156,7 +172,8 @@ export default class Login extends Component {
                       
                         <div className="forget-password">
                             <Button size="small"
-                                href="/forgetPassword"  >
+                                // href="/forgetPassword"
+                                onClick={this.handleForgotPassword}  >
                                 <div className="forget-password">Forget password?
                                   </div>
                             </Button>
@@ -166,7 +183,9 @@ export default class Login extends Component {
                     <div className="bottom">
                         <Link to={"/registration"} >
                             <Button size="small" className="forget-password"
-                                href="/registration"  >
+                                // href="/registration"  
+                                onClick={this.handleRegister}
+                                >
                                 <div className="forget-password">Create account?
                                   </div>
                             </Button>

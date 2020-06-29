@@ -19,8 +19,8 @@ class Service {
       console.log(" get in axios service ", data);
       return axios.post(apiUrl + "/reset-password", data, {
         headers: {
-          Authorization: token,
-        },
+          "Authorization": {token}
+        }
       });
     }
   }

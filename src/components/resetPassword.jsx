@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import '../styles/login.css' 
+import '../styles/login.css'
 import '../styles/forgetPassword.css'
 
 import FundooService from "../services/service";
@@ -21,6 +21,7 @@ export default class ResetPassword extends Component {
       showPassword: false,
       newPassword: "",
       confirmpassword: "",
+      token: this.props.match.params.token
     };
   }
 
@@ -28,44 +29,51 @@ export default class ResetPassword extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    console.log("In Handle Change", this.state)
   };
   snackbarClose = () => {
     this.setState({ snackbarOpen: false });
   };
 
   reset = () => {
+    console.log("reset", this.state)
     if (this.state.newPassword === "") {
       this.setState({
         snackbarOpen: true,
         snackbarMsg: "Password is Required",
       });
     } else {
-      let token = this.props.match.params.token;
+
       const user = {
         newPassword: this.state.newPassword,
       };
+
+      console.log("In reset function USER", user)
+
       service
-        .Resetpassword(token, user)
-        .then((json) => {
-          console.log("responce data==>", json);
-          if (json.status === 204) {
+        .Resetpassword(this.state.token, user)
+        .then((Response) => {
+          console.log("responce data==>", Response);
+          if (Response.statusText === 'OK') {
+            alert("Password reset Sucessfull")
             this.setState({
               snackbarOpen: true,
               snackbarMsg: "Password reset Sucessfull"
             });
-            
+
           }
           this.props.history.push("/");
         })
         .catch((err) => {
+          console.log(err)
           alert("Token is not valid");
         });
     }
   };
 
-    render() {
-        return(
-            <Card className="forget-password-container" variant="outlined">
+  render() {
+    return (
+      <Card className="forget-password-container" variant="outlined">
         <div className="fundoo-font" align="center">
           <span class="f">F</span>
           <span class="u">u</span>
@@ -116,8 +124,8 @@ export default class ResetPassword extends Component {
                     {this.state.showPassword ? (
                       <Visibility />
                     ) : (
-                      <VisibilityOff />
-                    )}
+                        <VisibilityOff />
+                      )}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -150,8 +158,8 @@ export default class ResetPassword extends Component {
                     {this.state.showPassword ? (
                       <Visibility />
                     ) : (
-                      <VisibilityOff />
-                    )}
+                        <VisibilityOff />
+                      )}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -165,18 +173,18 @@ export default class ResetPassword extends Component {
             variant="contained"
             color="primary"
             style={{ fontSize: "12px", width: "90px", padding: "7px 0px" }}
-            onClick={()=>this.reset}
-
+            // onClick={() => this.reset}
+            onClick={this.reset}
           >Submit</Button>
           <Button
             className="cancel-button"
             variant="contained"
             style={{ width: "90px", padding: "7px 0px", fontSize: "12px" }}
-            color="primary"onClick={() => this.props.history.push("/")}
+            color="primary" onClick={() => this.props.history.push("/")}
 
           >Cancel</Button>
         </div>
       </Card>
-        )
-    }
+    )
+  }
 }

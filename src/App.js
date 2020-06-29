@@ -14,13 +14,12 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={Login}></Route>
-      <Route exact path="/signin" component={Login}></Route>
+      <Route path="/signin" component={Login}></Route>
       <Route path="/forgetPassword" component={ForgetPassword} ></Route>
-      <Route path='/resetpassword' component={ResetPassword}></Route>
-      <Route exact path='/registration' component={Registration}></Route>     
-      <Route exact path='/dashboard' component={Dashboard}></Route>
+      <Route path='/resetpassword/:token'  component={ResetPassword}></Route>
+      <Route path='/registration' component={Registration}></Route>     
+      <Route path='/dashboard' component={Dashboard}></Route>
       <Route path="/note" component={card} />
-
     </Router>
   );
 }

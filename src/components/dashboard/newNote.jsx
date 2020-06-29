@@ -14,11 +14,11 @@ import UndoOutlinedIcon from '@material-ui/icons/UndoOutlined';
 import RedoOutlinedIcon from '@material-ui/icons/RedoOutlined';
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Container from "@material-ui/core/Container";
-import TextField from '@material-ui/core/TextField';
-import Input from '@material-ui/core/Input';
 import { withStyles } from '@material-ui/core'
 import Button from '@material-ui/core/Button';
-
+import InputBase from '@material-ui/core/InputBase';
+import FundooService from '../../services/noteService'
+let service = new FundooService();
 const styles = theme => ({
     input: {
         outlined: 'none',
@@ -30,6 +30,9 @@ class NewNote extends Component {
         super(props);
         this.state = {
             collapse: true,
+            title: "",
+            description:""
+
         }
     }
     onHandleClickaway = () => {
@@ -42,8 +45,50 @@ class NewNote extends Component {
             collapse: false,
         });
     };
+
+    // handleChangeText = (event) => {
+    //     this.setState({
+    //       [event.target.name]: event.target.value,
+    //     });
+    //     console.log("notes", this.state);
+    //   };
+
+      handleChangeTitle=(event)=> {
+          this.setState({
+              title:event.target.value,
+          })
+          console.log("title",event.target.value)
+      }
+      handleChangeDescription=(event)=> {
+          this.setState({
+            description:event.target.value,
+          })
+          console.log("description",event.target.value)
+      }
+
+
+    saveNote =()=> {
+        const user = {
+            title: this.state.title,
+            description: this.state.description
+          };
+          console.log("user note",user)
+
+          service
+          .createNotes(user)
+          .then((Response) => {
+            console.log("responce data==>", Response);
+            if (Response.statusText === 'OK') {
+              alert("note")
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+            alert("Token is not valid");
+          });
+      };
     render() {
-        const { classes, theme } = this.props;
+        const { classes } = this.props;
 
         return (
             <Container>
@@ -52,7 +97,8 @@ class NewNote extends Component {
                         {
                             this.state.collapse ?
                                 <div className="defaultContainer"
-                                    onClick={this.handleClick}>
+                                    onClick={this.handleClick}
+                                     >
                                     <div className="font">Take a note...</div>
                                     <div className="icons"><CheckBoxOutlinedIcon /></div>
                                     <div className="icons"><BrushIcon /></div>
@@ -62,13 +108,26 @@ class NewNote extends Component {
                                     onClick={this.handleClick}>
                                     <div className="summary">
                                         <div>
-                                            <TextField className={classes.input} placeholder="Title" inputProps={{ 'aria-label': 'description' }} />
+                                            <InputBase className={classes.input} 
+                                            placeholder="Title" 
+                                            name="title"
+                                            inputProps={{ 'aria-label': 'description' }}
+                                            // value={this.state.title}
+                                            value={this.state.value}
+                                            onChange={this.handleChangeTitle}
+                                             />
                                         </div>
                                         {/* <div className="title">Title</div> */}
                                         <div><FiberPinOutlinedIcon /></div>
                                     </div>
                                     <div>
-                                        <TextField className={classes.input} placeholder="Take a note.." inputProps={{ 'aria-label': 'description' }} />
+                                        <InputBase className={classes.input} 
+                                        placeholder="Take a note.."
+                                        name="description" 
+                                        inputProps={{ 'aria-label': 'description' }} 
+                                        value={this.state.value}
+                                        // value={this.state.description}
+                                        onChange={this.handleChangeDescription}/>
                                     </div>
                                     {/* <div className="title">Take a note..</div> */}
                                     <div className="noteIcons">
@@ -80,7 +139,8 @@ class NewNote extends Component {
                                         <MoreVertOutlinedIcon fontSize="small" />
                                         <UndoOutlinedIcon fontSize="small" />
                                         <RedoOutlinedIcon fontSize="small" />
-                                        <Button size="small">Close</Button>
+                                        <Button size="small"
+                                        onClick={this.saveNote}>Close</Button>
                                     </div>
                                 </div>
                         }

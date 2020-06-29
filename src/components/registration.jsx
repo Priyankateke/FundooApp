@@ -14,7 +14,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import fundooLogo from '../assets/logo.svg'
 import { Snackbar } from "@material-ui/core";
 
-
 import FundooService from "../services/service";
 let service = new FundooService();
 
@@ -57,6 +56,7 @@ export default class Registration extends Component {
                 ? event.target.checked
                 : event.target.value
         });
+        console.log(" handle change", this.state)
     }
 
     snackbarClose = () => {
@@ -116,9 +116,9 @@ export default class Registration extends Component {
 
         service
             .Registration(userData)
-            .then((json) => {
-                console.log("response data==>", json);
-                if (json.status === 200) {
+            .then((Response) => {
+                console.log("response data==>", Response);
+                if (Response.status === 200) {
                     alert("Registration Sucessfull")
                     this.setState({
                         snackbarOpen: true,
@@ -130,7 +130,6 @@ export default class Registration extends Component {
             .catch((err) => {
                 console.log(err);
             });
-       
     }
 
     render() {
