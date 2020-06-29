@@ -97,16 +97,11 @@ export default class Login extends Component {
                         snackbarOpen: true,
                         snackbarMessage: "login successful",
                     });
-                    // this.props.history.push("/dashboard");
-                    
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
-            
-
-        // alert("sign in")
     }
 
     render() {
@@ -183,7 +178,6 @@ export default class Login extends Component {
                     <div className="bottom">
                         <Link to={"/registration"} >
                             <Button size="small" className="forget-password"
-                                // href="/registration"  
                                 onClick={this.handleRegister}
                                 >
                                 <div className="forget-password">Create account?

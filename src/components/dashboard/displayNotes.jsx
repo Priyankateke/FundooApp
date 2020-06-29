@@ -18,10 +18,14 @@ const styles = theme => ({
         height: '135px',
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(3),
+        borderRadius:'10px',
+        paddingBottom:'5px'
+
     },
     noteContainer: {
         display:'flex',
         flexDirection:"column",
+        justifyContent:'space-between',
     }
 });
 
@@ -33,7 +37,6 @@ class DisplayNotes extends Component {
             description: "",
         }
     }
-
 
     render() {
         const { classes, theme } = this.props;
@@ -49,7 +52,7 @@ class DisplayNotes extends Component {
                             <Grid>
                                 {data.description}
                             </Grid>
-                            <Grid>
+                            <Grid >
                                 < NoteIcons/>
                             </Grid>
                         </Grid>

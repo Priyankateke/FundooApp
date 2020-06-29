@@ -1,0 +1,12 @@
+.footer {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.iconsConatainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
