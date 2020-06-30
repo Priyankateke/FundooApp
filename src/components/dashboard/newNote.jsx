@@ -5,15 +5,15 @@ import NoteIcons from './noteIcons';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import BrushIcon from '@material-ui/icons/Brush';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import FiberPinOutlinedIcon from '@material-ui/icons/FiberPinOutlined';
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Container from "@material-ui/core/Container";
 import { withStyles } from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
-import FundooService from '../../services/noteService';
 import OutlinedPin from '../../assets/outlined_pin.svg';
 import FilledPin from '../../assets/filled_pin.svg'
+
+import FundooService from '../../services/noteService';
 let service = new FundooService();
 const styles = theme => ({
     input: {
@@ -107,7 +107,6 @@ class NewNote extends Component {
                                                 onChange={this.handleChangeTitle}
                                             />
                                         </div>
-                                        {/* <div><FiberPinOutlinedIcon /></div> */}
                                         <img
                                             className={classes.pin}
                                             src={OutlinedPin}

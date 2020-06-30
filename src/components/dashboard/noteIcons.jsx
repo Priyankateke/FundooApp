@@ -10,17 +10,38 @@ import IconButton from "@material-ui/core/IconButton";
 import '../../styles/noteIcons.css'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+
+import FundooService from '../../services/noteService';
+let service = new FundooService();
+
 export default class NoteIcons extends Component {
     constructor(props) {
-        super(props) 
-            this.setState={
-                openList: false,
-                anchorEl: null,
-            }        
+        super(props)
+        this.setState = {
+            openList: false,
+            anchorEl: null,
+        }
     }
 
-    displayMoreOption=(id)=>{
+    displayMoreOption = (id) => {
         alert(id)
+        let noteData = {
+            noteIdList: [id],
+            isDeleted: true,
+        };
+        service
+            .deleteNote(noteData)
+            .then((response) => {
+                console.log("note responce data==>",response);
+                console.log(response.response.response.response);
+                
+                if(response.data.data.success === true) {
+                    alert("note deleted")
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
     render() {
         return (
@@ -57,9 +78,9 @@ export default class NoteIcons extends Component {
 
                 <IconButton aria-label="More">
                     <Tooltip title="More">
-                        <MoreVertOutlinedIcon                      
-                        fontSize="small" 
-                        onClick={() => this.displayMoreOption(this.props.noteData.id)} />
+                        <MoreVertOutlinedIcon
+                            fontSize="small"
+                            onClick={() => this.displayMoreOption(this.props.noteData.id)} />
                     </Tooltip>
                 </IconButton>
             </div>

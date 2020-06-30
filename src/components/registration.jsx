@@ -109,7 +109,7 @@ export default class Registration extends Component {
             lastName: this.state.lastname,
             email: this.state.username,
             password: this.state.password,
-            service: this.state.service
+            service: "advance"
         };
         console.log("USER", userData);
 

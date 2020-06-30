@@ -22,12 +22,13 @@ export default class NoteService {
         });
     }
 
-    deleteNote() {
+    deleteNote(data) {
         let token = localStorage.getItem('token')
         console.log("note trash")
-        return axios.post(apiUrl + "/trashNotes", {
+        console.log("token in service",token)
+        return axios.post(apiUrl + "/trashNotes", data,{
             headers: {
-                "Authorization": token,
+                "Authorization": token,    
             }
         })
     }
