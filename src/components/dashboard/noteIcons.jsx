@@ -16,13 +16,11 @@ export default class NoteIcons extends Component {
             this.setState={
                 openList: false,
                 anchorEl: null,
-            }
-        
+            }        
     }
 
-    displayMoreOption=()=>{
-        
-
+    displayMoreOption=(id)=>{
+        alert(id)
     }
     render() {
         return (
@@ -59,9 +57,9 @@ export default class NoteIcons extends Component {
 
                 <IconButton aria-label="More">
                     <Tooltip title="More">
-                        <MoreVertOutlinedIcon 
+                        <MoreVertOutlinedIcon                      
                         fontSize="small" 
-                        onClick={this.displayMoreOption} />
+                        onClick={() => this.displayMoreOption(this.props.noteData.id)} />
                     </Tooltip>
                 </IconButton>
             </div>

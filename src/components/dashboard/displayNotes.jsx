@@ -52,6 +52,7 @@ class DisplayNotes extends Component {
         this.state = {
             title: "",
             description: "",
+            moreOption:"",
         }
     }
 
@@ -81,11 +82,10 @@ class DisplayNotes extends Component {
                                 </Grid>
                             </Grid>
                             <Grid>
-
                                 {data.description}
                             </Grid>
                             <Grid >
-                                < NoteIcons />
+                                    < NoteIcons noteData={data}/>
                             </Grid>
                         </Grid>
                     </Paper>
