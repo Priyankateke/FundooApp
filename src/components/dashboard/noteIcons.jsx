@@ -8,7 +8,21 @@ import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import '../../styles/noteIcons.css'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 export default class NoteIcons extends Component {
+    constructor(props) {
+        super(props) 
+            this.setState={
+                openList: false,
+                anchorEl: null,
+            }
+        
+    }
+
+    displayMoreOption=()=>{
+
+    }
     render() {
         return (
             <div className="iconsConatainer">
@@ -44,7 +58,9 @@ export default class NoteIcons extends Component {
 
                 <IconButton aria-label="More">
                     <Tooltip title="More">
-                        <MoreVertOutlinedIcon fontSize="small" />
+                        <MoreVertOutlinedIcon 
+                        fontSize="small" 
+                        onClick={this.displayMoreOption} />
                     </Tooltip>
                 </IconButton>
             </div>

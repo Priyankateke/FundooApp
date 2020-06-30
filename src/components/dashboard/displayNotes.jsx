@@ -42,6 +42,7 @@ class DisplayNotes extends Component {
         const { classes, theme } = this.props;
         let allNote = this.props.note;
         const mapNotes = allNote.map((data, index) => {
+            console.log(data, "  ",index)
             return (
                 <div key={index} className={classes.root}>
                     <Paper className={classes.paper}>
@@ -53,6 +54,7 @@ class DisplayNotes extends Component {
                                 {data.description}
                             </Grid>
                             <Grid >
+                                <br></br>
                                 < NoteIcons/>
                             </Grid>
                         </Grid>

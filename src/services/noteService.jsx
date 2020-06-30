@@ -21,5 +21,15 @@ export default class NoteService {
             }
         });
     }
+
+    deleteNote() {
+        let token = localStorage.getItem('token')
+        console.log("note trash")
+        return axios.post(apiUrl + "/trashNotes", {
+            headers: {
+                "Authorization": token,
+            }
+        })
+    }
 }
 
