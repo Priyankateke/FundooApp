@@ -9,7 +9,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Refresh from '@material-ui/icons/Refresh'
 import Typography from '@material-ui/core/Typography';
@@ -243,7 +242,8 @@ class Dashboard extends React.Component {
             <Toolbar >
               <IconButton className={classes.multilineColor}
                 onClick={this.handleToggle}
-                aria-label="Open drawer">
+                aria-label="Open drawer"
+                edge="start">
                 <MenuIcon />
               </IconButton>
               <img className={classes.logo} src={keep} alt="Logo" />

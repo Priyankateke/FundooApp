@@ -21,6 +21,7 @@ export default class NoteIcons extends Component {
     }
 
     displayMoreOption=()=>{
+        
 
     }
     render() {

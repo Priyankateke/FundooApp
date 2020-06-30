@@ -22,6 +22,8 @@ export default class GetAllNotes extends Component {
        .then((data)=>{
            console.log(data.data.data.data);
            this.setState({allNotes:data.data.data.data});
+           console.log("get all list array", this.state.allNotes)
+           console.log("id",this.state.allNotes)
        })
        .catch((err)=>{
            console.log(err)

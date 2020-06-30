@@ -11,12 +11,19 @@ import Container from "@material-ui/core/Container";
 import { withStyles } from '@material-ui/core'
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
-import FundooService from '../../services/noteService'
+import FundooService from '../../services/noteService';
+import OutlinedPin from '../../assets/outlined_pin.svg';
+import FilledPin from '../../assets/filled_pin.svg'
 let service = new FundooService();
 const styles = theme => ({
     input: {
         outlined: 'none',
     },
+    pin: {
+        width: '25px',
+        height: '25px',
+        opacity: 0.80,
+    }
 })
 
 class NewNote extends Component {
@@ -100,7 +107,12 @@ class NewNote extends Component {
                                                 onChange={this.handleChangeTitle}
                                             />
                                         </div>
-                                        <div><FiberPinOutlinedIcon /></div>
+                                        {/* <div><FiberPinOutlinedIcon /></div> */}
+                                        <img
+                                            className={classes.pin}
+                                            src={OutlinedPin}
+                                            alt="Pin"
+                                            />
                                     </div>
                                     <div>
                                         <InputBase className={classes.input}
@@ -112,7 +124,7 @@ class NewNote extends Component {
                                     </div>
                                     <div className="noteIcons">
 
-                                       <div><NoteIcons /></div> 
+                                        <div><NoteIcons /></div>
                                         <div className="close-button">
                                             <Button size="small"
                                                 onClick={this.saveNote}>Close</Button>
