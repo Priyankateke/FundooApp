@@ -70,13 +70,17 @@ class NewNote extends Component {
             .then((Response) => {
                 console.log("responce data==>", Response);
                 if (Response.statusText === 'OK') {
-                    alert("note")
+                //    alert("note")
                 }
             })
             .catch((err) => {
                 console.log(err)
                 alert("Token is not valid");
             });
+            this.setState({
+                collapse: false,
+            });
+
     };
     render() {
         const { classes } = this.props;

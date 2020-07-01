@@ -24,7 +24,7 @@ export default class NoteIcons extends Component {
     }
 
     displayMoreOption = (id) => {
-        alert(id)
+        // alert(id)
         let noteData = {
             noteIdList: [id],
             isDeleted: true,
@@ -32,20 +32,26 @@ export default class NoteIcons extends Component {
         service
             .deleteNote(noteData)
             .then((response) => {
-                console.log("note responce data==>",response);
+                console.log("note responce data==>", response);
                 console.log(response.response.response.response);
-                
-                if(response.data.data.success === true) {
-                    alert("note deleted")
+
+                if (response.data.data.success === true) {
+                    //alert("note deleted")
                 }
             })
             .catch((err) => {
                 console.log(err)
             })
     }
+
+    snackbarClose = () => {
+        this.setState({ snackbarOpen: false });
+    };
+
     render() {
         return (
             <div className="iconsConatainer">
+                
                 <IconButton aria-label="Remind me" edge="start">
                     <Tooltip title="Reminde me">
                         <AddAlertOutlinedIcon fontSize="small" />
